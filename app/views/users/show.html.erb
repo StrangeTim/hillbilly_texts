@@ -1,0 +1,44 @@
+<h1 class="page-header text-center row">
+  Profile for <strong><%= @user.full_name %></strong>
+<% if can? :manage, @user %>
+  <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-warning pull-right", id: 'edit-user'%>
+<% end %>
+</h1>
+
+<div class="row">
+  <!-- <span style="float: left; margin-right: 20px; margin-bottom: 20px"><%#= image_tag @user.avatar.url(:medium) %></span> -->
+
+  <% if current_user != nil %>
+  <p class="lead">
+    <span class="pull-right">
+      <% if @user.admin %>
+      <span class="btn btn-primary btn-xs disabled">ADMIN</span>
+      <% end %>
+    </span>
+  </p>
+  <% else %>
+  <div style="margin-top: 60px" class="col-md-3 col-md-offset-2 text-center">
+    <%= link_to "Login", new_user_session_path, class: "btn btn-lg btn-default inline" %>
+    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-default inline"  %>
+  </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class='col-sm-6'>
+    <h2>Add a new contact:</h2>
+    <%= render 'contacts/form' %>
+  </div>
+  <div class="col-sm-6">
+    <h3>Your current contact list:</h3>
+    <% if @user_contacts.any? %>
+      <% @user_contacts.each do |contact| %>
+        <div class="row well">
+          <%= contact.full_name %>
+          <%= contact.phone_number %>
+        </div>
+      <% end %>
+    <% else %>
+      You have no life. Get some friends.
+    <% end %>
+  </div>
+</div>

@@ -14,19 +14,19 @@
       <% if user_signed_in? %>
       <ul class="nav navbar-nav navbar-left">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="actions-dropdown">Feats<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="actions-dropdown">Message<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li>menu 1 </li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="actions-dropdown">Obstacles<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="actions-dropdown">Contact<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li> menu 2 </li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="actions-dropdown">Track<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="actions-dropdown">Words2<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li> menu 1 </li>
           </ul>
@@ -50,7 +50,6 @@
             <%= current_user.email %><span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li>menu 1</li>
             <li><%= link_to "Profile", user_path(current_user), id: "profile" %></li>
             <li><%= link_to "Edit", edit_user_registration_path(current_user)%></li>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete, id: "logout" %></li>

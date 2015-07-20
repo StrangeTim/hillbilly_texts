@@ -1,0 +1,13 @@
+<%= render 'layouts/errors', object: @message %>
+
+<%= bootstrap_form_for @message do |f| %>
+  <%= f.text_area :text, rows: "2" %>
+  <% if @user_contacts.any? %>
+    <% @user_contacts.each do |contact| %>
+      <%= f.check_box contact.full_name %>
+    <% end %>
+  <% else %>
+    There are no contacts yet.<br>
+  <% end %>
+  <%= f.submit %>
+<% end %>

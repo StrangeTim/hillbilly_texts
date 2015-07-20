@@ -1,0 +1,8 @@
+<%= render 'layouts/errors', object: @contact %>
+
+<%= bootstrap_form_for @contact do |f| %>
+  <%= f.text_field :first_name %>
+  <%= f.text_field :last_name %>
+  <%= f.phone_field :phone_number %>
+  <%= f.submit class: "btn btn-block btn-default" %>
+<% end %>
