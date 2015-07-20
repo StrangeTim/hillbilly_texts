@@ -1,8 +1,8 @@
 
 <%= bootstrap_form_for @message do |f| %>
-<%= f.text_area :text, rows: 2 %>
+<%= f.text_area :text, rows: 2, label: "Message" %>
   <% if @user_contacts.any? %>
-    <%= f.collection_check_boxes :contacts, current_user.contacts, :id, :first_name %>
+    <%= f.collection_check_boxes :contact_ids, current_user.contacts, :id, :first_name, label: "Recipients: " %>
   <% else %>
     There are no contacts yet.<br>
   <% end %>

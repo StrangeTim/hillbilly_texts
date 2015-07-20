@@ -15,6 +15,9 @@
 
   <%= f.email_field :email, placeholder: "john@johndigweed.com", id: "email"  %>
 
+  <%= f.phone_field :phone_number, placeholder: "Example: 1234567890", id: "phone"  %>
+  
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
   <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

@@ -18,7 +18,7 @@ class ContactsController < ApplicationController
     @contact = @user.contacts.new(contact_params)
     if @contact.save
       flash[:notice] = "You have successfully added a contact."
-      redirect_to user_path(@user)
+      redirect_to :back
     else
       flash[:alert] ="There was an error with your submission."
       redirect_to :back
@@ -51,7 +51,7 @@ class ContactsController < ApplicationController
 
   private
   def contact_params
-    params.require(:contact).permit(:first_name, :last_name, :phone_number, {:contact_ids => []}, :user_id)
+    params.require(:contact).permit(:first_name, :last_name, :phone_number, :user_id)
   end
 
 end
