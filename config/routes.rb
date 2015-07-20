@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: ["show", "index"]
-  resources :messages
+  resources :messages, except: [:edit, :update, :destroy]
   resources :contacts
 
 end

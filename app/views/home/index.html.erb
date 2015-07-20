@@ -1,5 +1,9 @@
 <h1>Yo</h1>
 
 <% if user_signed_in? %>
+  <h3>Send a message:</h3>
   <%= render "messages/form" %>
+  <hr>
+  <h3>Add a new contact</h3>
+  <%= render "contacts/form" %>
 <% end %>

@@ -33,8 +33,10 @@
     <% if @user_contacts.any? %>
       <% @user_contacts.each do |contact| %>
         <div class="row well">
-          <%= contact.full_name %>
-          <%= contact.phone_number %>
+          <p>
+          Name: <%= contact.full_name %>
+        </p>
+          Phone: <%= contact.phone_number %>
         </div>
       <% end %>
     <% else %>

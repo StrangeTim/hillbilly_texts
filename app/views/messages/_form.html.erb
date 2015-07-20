@@ -1,13 +1,29 @@
-<%= render 'layouts/errors', object: @message %>
 
 <%= bootstrap_form_for @message do |f| %>
-  <%= f.text_area :text, rows: "2" %>
+<%= f.text_area :text, rows: 2 %>
   <% if @user_contacts.any? %>
-    <% @user_contacts.each do |contact| %>
-      <%= f.check_box contact.full_name %>
-    <% end %>
+    <%= f.collection_check_boxes :contacts, current_user.contacts, :id, :first_name %>
   <% else %>
     There are no contacts yet.<br>
   <% end %>
-  <%= f.submit %>
+  <%= submit_tag %>
 <% end %>
+
+
+
+
+
+<!--
+
+ALTERNATE METHOD
+
+<%#= form_tag messages_path %>
+  <%#= text_area_tag :text %>
+  <%# if @user_contacts.any? %>
+    <%#= collection_check_boxes :contacts, :contact_ids, @user_contacts, :id, :first_name %>
+  <%# else %>
+    There are no contacts yet.<br>
+  <%# end %>
+<%#= submit_tag %>
+
+-->
