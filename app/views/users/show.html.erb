@@ -15,6 +15,8 @@
       <span class="btn btn-primary btn-xs disabled">ADMIN</span>
       <% end %>
     </span>
+    <strong>Phone Number: </strong><%= @user.phone_number %><br>
+    <strong>Email: </strong><%= @user.email %>
   </p>
   <% else %>
   <div style="margin-top: 60px" class="col-md-3 col-md-offset-2 text-center">
@@ -46,24 +48,63 @@
 </div>
 <div class="row">
   <hr>
-  <% if @user_messages.any? %>
+  <% if @user_sent.any? %>
     <table class="table table-striped table-hover ">
       <thead>
         <tr>
           <th>ID </th>
           <th>Text</th>
           <th>Recipients</th>
+          <th>Sent</th>
         </tr>
       </thead>
       <tbody>
-        <% @user_messages.each do |message| %>
+        <% @user_sent.each do |message| %>
           <tr>
             <td> <%= message.id %></td>
             <td> <%= message.text %></td>
             <td>
-              <% message.contacts.each do |contact| %>
-                <%= contact.full_name %>,
+              <% if message.contacts.length > 1 %>
+                <% message.contacts.each do |contact| %>
+                  <%= contact.full_name %>,
+                <% end %>
+              <% else %>
+                <% contact = message.contacts[0] %>
+                <%= contact.full_name %>
               <% end %>
+            </td>
+            <td><%= message.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+</div>
+<div class="row">
+  <hr>
+  <% if @user_replies.any? %>
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <th>ID </th>
+          <th>Text</th>
+          <th>From</th>
+          <th>Recieved</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user_replies.each do |reply| %>
+          <tr>
+            <td> <%= reply.id %></td>
+            <td> <%= reply.text %></td>
+            <td>
+              <% reply.contacts.each do |contact| %>
+                <%= contact.full_name %>
+              <% end %>
+            </td>
+            <td>
+              <%= reply.created_at %>
             </td>
           </tr>
         <% end %>
