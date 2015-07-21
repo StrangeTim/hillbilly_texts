@@ -13,7 +13,9 @@ class Message < ActiveRecord::Base
     end
   end
 
-
+  def auto_reply(to_number, text, from_number)
+    send_message(from_number, text, to_number)
+  end
 
   private
 
@@ -32,7 +34,6 @@ class Message < ActiveRecord::Base
         response.execute
       rescue RestClient::BadRequest => error
         message = JSON.parse(error.response)['message']
-        binding.pry
         errors.add(:base, message)
         false
       end

@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   resources :users, only: ["show", "index"]
   resources :messages, except: [:edit, :update, :destroy]
   resources :contacts
+  get '/inbound_messages', to: 'messages#inbound_message'
+  post '/inbound_messages', to: 'messages#inbound_message'
+
 
 end

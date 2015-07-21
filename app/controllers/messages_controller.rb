@@ -29,6 +29,15 @@ class MessagesController < ApplicationController
     end
   end
 
+  def inbound_message
+    @message = Message.new
+    reply = "This number does not accept replies."
+    from = params[:From]
+    from = from.slice(2, 10)
+    @message.auto_reply(from, reply, "6267738675")
+    redirect_to 'home#index'
+  end
+
   private
   def message_params
     params.require(:message).permit(:text, {:contact_ids => []}, :user_id)
